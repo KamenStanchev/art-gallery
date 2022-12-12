@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+  <style>
+      .picture-container {
+          display: flex;
+          flex-direction: row;
+          padding: 3%;
+          gap: 3%;
+      }
+
+      .picture {
+          flex: 1;
+      }
+
+      .picture img {
+          display: flex;
+
+          justify-content: center;
+          max-width: 100%;
+          height: auto;
+          box-shadow: 6px 6px 20px black;
+          object-fit: fill;
+      }
+
+      .picture-details {
+          display: flex;
+          flex: 2;
+          flex-direction: column;
+          justify-content: center;
+      }
+
+      .picture-container h1, h2, h3, h4, h5 {
+          border-bottom: whitesmoke solid 2px;
+          line-height: 35px;
+          color: whitesmoke;
+          font-family: 'Dancing Script', cursive;
+      }
+  </style>
+
+  <div class="picture-container">
+    <div class="picture">
+      <img src="{{ picture.image.url }}" alt="">
+    </div>
+    <div class="picture-details">
+      <h3>{{ picture.title }}</h3>
+      <h3>{{ picture.description }}</h3>
+      <h3>{{ picture.date_created }}</h3>
+      <h3>Category: {{ categories|lower }}</h3>
+    </div>
+  </div>
+
+
+{% endblock %}
