@@ -16,8 +16,15 @@
           gap: 40px;
       }
 
-      .gallery-container h4{
+      .gallery-container a{
+          box-shadow: whitesmoke 0 0 4px 3px;
+      }.gallery-container a:hover{
+          box-shadow: whitesmoke 0 0 6px 6px;
+      }
+
+      .gallery-container h1{
           color: red;
+          font-family: 'Dancing Script', cursive;
       }
 
       .object-container {
@@ -55,10 +62,10 @@
 
   <div class="gallery-container">
     {% if alert %}
-      <h4>{{ alert }}</h4>
+      <h1>{{ alert }}</h1>
     {% endif %}
     {% for pic in pictures %}
-      <a href="{% url 'picture-details' pic.id %}">
+      <a  href="{% url 'picture-details' pic.id %}">
         <div class="object-container">
           <div class="img-container">
             <img src="{{ pic.image.url }}" alt="">
