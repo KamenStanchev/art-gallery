@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from gallery_app.models import Picture, Category, AboutUs
+from gallery_app.models import Picture, Category, AboutUs, Address
 
 
 def home(request):
@@ -54,4 +54,15 @@ def about_us(request):
 
     return render(request, 'gallery_app/about_us.html', context={
         'description': about_us_description,
+    })
+
+
+def contact_us(request):
+    try:
+        address = Address.objects.all()[0]
+    except:
+        address = None
+
+    return render(request, 'gallery_app/contact_us.html', context={
+        'address': address,
     })

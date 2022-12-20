@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <style>
+    .img-container{
+        display: flex;
+        justify-content: right;
+        flex: 1;
+    }
+    .img-container img{
+        opacity: 30%;
+        max-width: 65%;
+        height: auto;
+        margin-top: 100px;
+
+    }
+    .address-container{
+        margin-top: 170px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    .address-field{
+        text-align: left;
+        font-size: 26px;
+        margin: 10px 30px;
+    }
+
+  </style>
+
+
+  <div style="display: flex; flex-direction: row;">
+
+    <div class = 'img-container'>
+      <img src="{% static 'images/contact-us.jpg' %}" alt="No image">
+    </div>
+    <div class="wellcome-title address-container">
+      <div class="address-field">{{ address.country }}</div>
+      <div class="address-field">{{ address.city }}</div>
+      <div class="address-field">{{ address.street }}</div>
+      <div class="address-field">{{ address.phone }}</div>
+      <div class="address-field">{{ address.email }}</div>
+    </div>
+  </div>
+
+
+
+{% endblock content %}
