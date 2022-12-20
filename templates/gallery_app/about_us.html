@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <style>
+    .img-container{
+        flex: 1;
+    }
+    .img-container img{
+        opacity: 40%;
+        max-width: 100%;
+        height: auto;
+        margin-top: 100px;
+    }
+
+  </style>
+
+
+  <div style="display: flex; flex-direction: row;">
+    <div class="wellcome-title" style="flex: 1;">
+      <div style="text-align: left; font-size: 26px; margin: 50px 30px;">{{ description }}</div>
+    </div>
+    <div class = 'img-container'>
+      <img src="{% static 'images/about-us-img.jpg' %}" alt="No image">
+    </div>
+  </div>
+
+
+
+{% endblock content %}

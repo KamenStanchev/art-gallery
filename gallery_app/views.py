@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from gallery_app.models import Picture, Category
+from gallery_app.models import Picture, Category, AboutUs
 
 
 def home(request):
@@ -44,3 +44,14 @@ def view_by_category(request, pk):
     context = {'pictures': pictures,
                'alert': alert}
     return render(request, 'gallery_app/gallery.html', context)
+
+
+def about_us(request):
+    try:
+        about_us_description = AboutUs.objects.filter(is_used=True)[0].description
+    except:
+        about_us_description = None
+
+    return render(request, 'gallery_app/about_us.html', context={
+        'description': about_us_description,
+    })
