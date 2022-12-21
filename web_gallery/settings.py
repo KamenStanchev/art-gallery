@@ -20,10 +20,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-%ktk_8vkt&q=r!k-x0ze@k$om40h)4p(xw0on_g-0((-wlla9j'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG', None) == 'True'
 
 ALLOWED_HOSTS = ['*']
 
@@ -88,14 +88,16 @@ WSGI_APPLICATION = 'web_gallery.wsgi.application'
 #     }
 # }
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'PUtD50z1HpQEE1QC0DP6',
-        'HOST': 'containers-us-west-177.railway.app',
-        'PORT': '7517',
+        'ENGINE': os.environ.get('DB_ENGINE', None),
+        'NAME': os.environ.get('DB_NAME', BASE_DIR / 'db.sqlite3'),
+        'USER': os.environ.get('DB_USER', None),
+        'PASSWORD': os.environ.get('DB_PASSWORD', None),
+        'HOST': os.environ.get('DB_HOST', None),
+        'PORT': os.environ.get('DB_PORT', None),
+
     }
 }
 
